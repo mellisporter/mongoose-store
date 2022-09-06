@@ -7,6 +7,14 @@
     <title>Product Index</title>
 </head>
 <body>
+    <h1> Product Index Page</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <a href="/products/"> <%=product.title; %></a>
+            </li>
+        <% }) %>
+    </ul>
     
 </body>
 </html>

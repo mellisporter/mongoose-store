@@ -30,7 +30,11 @@ app.get("/", function (req, res){
 // INDEX
 
 app.get("/products" , function (req, res){
-    res.send("Index")
+    Product.find({}, (error, allProducts)=> {
+        res.render("index.ejs" , {
+            products: allProducts,
+        })
+    })
 })
 
 // NEW
