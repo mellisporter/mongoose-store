@@ -39,6 +39,9 @@ app.get("/products" , function (req, res){
 
 // NEW
 
+app.get("/products/new" , function (req, res){
+    res.render("new.ejs")
+})
 // DELETE
 
 // UPDATE
