@@ -7,14 +7,27 @@
     <title>Product Index</title>
 </head>
 <body>
+    <nav>
+        <a href="/products/new">Create a New Product</a>
+    </nav>
     <h1> Product Index Page</h1>
-    <ul>
         <% products.forEach(product => { %>
+    
+            <div>
+                <ul type="none">
             <li>
                 <a href="/products/"> <%=product.name; %></a>
             </li>
+            <li>
+                <a href="/products/<%=product._id%>"><img src="<%=product.img%>" alt=""></a>
+            </li>
+            <li>
+                <%=product.price%>
+            </li>
+            </div>
         <% }) %>
-    </ul>
+        </ul>
+        </div>
     
 </body>
 </html>
