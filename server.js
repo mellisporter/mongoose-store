@@ -63,6 +63,14 @@ app.post("/products" , function (req, res){
 
 // SHOW
 
+app.get("/products/:id", (req, res)=>{
+    Product.findById(req.params.id, (err, foundProduct)=>{
+        res.render("show.ejs" , {
+            product: foundProduct,
+        })
+    })
+})
+
 // LISTENER
 const PORT = process.env.PORT; // calls port variable from .env to protect our data
 // note to self: nwws to call this variable AFtER requiring .env or it will show up as undefined
