@@ -54,7 +54,8 @@ app.get("/products/new" , function (req, res){
 
 app.post("/products" , function (req, res){
     Product.create(req.body, (error, createdProduct) => {
-        res.send(createdProduct)
+        // res.send(createdProduct)
+        res.render("index.ejs")
     })
 })
 
