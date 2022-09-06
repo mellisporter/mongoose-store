@@ -11,6 +11,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 	useUnifiedTopology: true
 });
 
+const Product = require("./models/products")
+
 // MIDDLEWARE
 
 // Define callback functions for various events
@@ -19,9 +21,17 @@ db.on('error', (err) => console.log(err.message + ' is mongo not running?'));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+// splash -- i am adding this just so the main route on 3000 links to the products page
 
+app.get("/", function (req, res){
+    res.send(`View products <a href="/products">here.</a>`)
+})
 
 // INDEX
+
+app.get("/products" , function (req, res){
+    res.send("Index")
+})
 
 // NEW
 
@@ -42,3 +52,5 @@ const PORT = process.env.PORT; // calls port variable from .env to protect our d
 app.listen(PORT, function(){
     console.log(`Let's start selling on port ${PORT}`)
 });
+
+console.log(Product)
