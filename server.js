@@ -15,6 +15,10 @@ const Product = require("./models/products")
 
 // MIDDLEWARE
 
+// Body parser middleware: give us access to req.body
+app.use(express.urlencoded({ extended: true }));
+
+
 // Define callback functions for various events
 const db = mongoose.connection
 db.on('error', (err) => console.log(err.message + ' is mongo not running?'));
@@ -47,6 +51,12 @@ app.get("/products/new" , function (req, res){
 // UPDATE
 
 // CREATE
+
+app.post("/products" , function (req, res){
+    Product.create(req.body, (error, createdProduct) => {
+        res.send(createdProduct)
+    })
+})
 
 // EDIT
 
