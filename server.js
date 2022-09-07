@@ -107,6 +107,14 @@ app.post("/products" , function (req, res){
 
 // EDIT
 
+app.get("/products/:id/edit" , (req, res)=>{
+	Product.findById(req.params.id, (error, foundProduct)=>{
+		res.render("edit.ejs" , {
+			product: foundProduct,
+		})
+	})
+})
+
 // SHOW
 
 app.get("/products/:id", (req, res)=>{
