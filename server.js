@@ -96,6 +96,17 @@ app.delete("/products/:id" , (req, res)=>{
 
 // UPDATE
 
+app.put("/products/:id" , function (req , res){
+
+	Product.findByIdAndUpdate(req.params.id, req.body, {
+		new:true,
+	}, (error, updatedBook) => {
+		res.redirect(`/products/${req.params.id}`)
+	})
+})
+
+
+
 // CREATE
 
 app.post("/products" , function (req, res){
