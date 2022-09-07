@@ -13,5 +13,11 @@
     <p class="qty">Quantity: <%=product.qty%></p>
     <a href="/products">Return to Index</a>
     <a href="/products/<%=product.id%>/edit">Edit Product</a>
+    <!-- going to try to add the buy button here. think an if statement should do the trick to add the button -->
+    <% if (product.qty > 0) { %>
+        <button>BUY</button>
+   <% } else { %>
+    <p> This item is out of stock. </p>
+   <% } %>
 </body>
 </html>
