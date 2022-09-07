@@ -4,6 +4,8 @@ const express = require("express"); // requires express
 const app = express(); // creates app functions
 require('dotenv').config(); // needed to recognize variables in .env
 
+const methodOverride = require("method-override")
+
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -20,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'))
 
+// Middleware
+app.use(methodOverride("_method"))
 
 // Define callback functions for various events
 const db = mongoose.connection
@@ -82,6 +86,13 @@ app.get("/products/new" , function (req, res){
     res.render("new.ejs")
 })
 // DELETE
+
+app.delete("/products/:id" , (req, res)=>{
+	// res.send("deleting...")
+	Product.findByIdAndRemove(req.params.id, (err, data) => {
+		res.redirect("/products")
+	})
+})
 
 // UPDATE
 
