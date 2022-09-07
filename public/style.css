@@ -1,4 +1,16 @@
 body {
-    background-color: black;
+    background-color: lightblue;
     color: white;
+}
+
+ul {
+    background-color: whitesmoke;
+}
+
+h1 {
+    text-align: center;
+}
+
+.qty, .price {
+    color: black;
 }
